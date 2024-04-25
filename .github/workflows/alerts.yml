@@ -1,0 +1,20 @@
+name: Fetch Bypass Alerts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  fetch-bypass-alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch Bypass Alerts
+        run: node app.js
