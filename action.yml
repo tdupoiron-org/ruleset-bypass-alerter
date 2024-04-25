@@ -1,0 +1,15 @@
+name: Ruleset Bypass Alerter
+description: Send alerts if a bypassed ruleset is detected
+
+inputs:
+  github_token:
+    description: The access token used to authenticate to the GitHub API
+    required: true
+
+outputs:
+  issue_number:
+    description: The issue number of the alert issue
+
+runs:
+  using: 'node20'
+  main: 'app.js'
