@@ -6,6 +6,11 @@ on:
 
   workflow_dispatch:
 
+env:
+  RULESET_BYPASS_ALERTER_APPID: ${{ secrets.RULESET_BYPASS_ALERTER_APPID }}
+  RULESET_BYPASS_ALERTER_INSTALLATIONID: ${{ secrets.RULESET_BYPASS_ALERTER_INSTALLATIONID }}
+  RULESET_BYPASS_ALERTER_PRIVATEKEY: ${{ secrets.RULESET_BYPASS_ALERTER_PRIVATEKEY }}
+
 jobs:
   fetch-bypass-alerts:
     runs-on: ubuntu-latest
