@@ -1,6 +1,5 @@
 # ruleset-bypass-notifier
 
-change
 
 ## Goal
 
