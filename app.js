@@ -100,29 +100,38 @@ async function main() {
         const actor = ruleSuite.actor_name;
         const ref = ruleSuite.ref;
         const title = `🚨 Rule Suite Bypass Alert ${id} 🚨`;
-        const body = `
-# Rule Suite Bypass Alert
 
-Hello @${actor}!
+        // Check if the actor is an app or a real user
+        const isApp = actor.includes('[bot]') || actor.includes('[app]');
 
-We noticed that you bypassed a ruleset on ref \`${ref}\`.
+        if (!isApp) {
+            const body = `
+  # Rule Suite Bypass Alert
 
-We understand there may be valid reasons for this action. However, to ensure transparency and maintain good practices, we kindly request you to justify the bypass.
+  Hello @${actor}!
 
-Please add a comment to this issue explaining the reason for the bypass.
+  We noticed that you bypassed a ruleset on ref \`${ref}\`.
 
-Thank you for your cooperation!
-        `;
-        
-        const existingIssue = await searchIssue(owner, repo, title);
+  We understand there may be valid reasons for this action. However, to ensure transparency and maintain good practices, we kindly request you to justify the bypass.
 
-        if (!existingIssue) {
-          await createIssue(owner, repo, title, body, actor);
+  Please add a comment to this issue explaining the reason for the bypass.
+
+  Thank you for your cooperation!
+          `;
+          
+          const existingIssue = await searchIssue(owner, repo, title);
+
+          if (!existingIssue) {
+            await createIssue(owner, repo, title, body, actor);
+          }
+          else {
+            console.log(`Issue already exists: ${existingIssue.html_url}`);
+          }
+
         }
         else {
-          console.log(`Issue already exists: ${existingIssue.html_url}`);
+          console.log(`Ignoring user ${actor}`);
         }
-
       }
     }
 
