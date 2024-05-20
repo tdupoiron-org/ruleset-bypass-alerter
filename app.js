@@ -38,7 +38,7 @@ async function getOrgRuleSuites(org) {
   const { data } = await octokit.rest.repos.getOrgRuleSuites({
     org,
     rule_suite_result: "bypass",
-    time_period: "day"
+    time_period: "hour"
   });
   return data;
 }

@@ -1,6 +1,10 @@
 name: Fetch Bypass Alerts
 
 on:
+  push:
+    branches:
+      - main
+
   schedule:
     - cron: '0 0 * * *'
 
