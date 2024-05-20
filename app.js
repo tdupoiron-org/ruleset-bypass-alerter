@@ -94,6 +94,9 @@ async function main() {
 
       // For each rule suite, create an issue
       for (const ruleSuite of ruleSuites) {
+
+        console.log(JSON.stringify(ruleSuite, null, 2));
+
         const owner = orgName;
         const repo = ruleSuite.repository_name;
         const id = ruleSuite.id;
