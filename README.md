@@ -37,5 +37,5 @@ It must have the following permissions:
 * Fork this code into the same organization
 * Enable GitHub Actions
 
-Every day at midnight, the script will start, looking for bypass events.
+On every push on main, and on a schedule (Every day at midnight), the script will start, looking for bypass events.
 For each event found, it will smartly create an issue in the impacted repository, mentioning the author that these events must be taken carefully.
